@@ -17,8 +17,6 @@ import Layout from './Navbar/Layout';
 import Dashboard from './DashBoard';
 import Login from './Login';
 import LandingPage from './LandingPage';
-import axios from 'axios';
-import { useState } from 'react';
 
 const ProtectRoute = ({children}) => {
   const token = localStorage.getItem('token')

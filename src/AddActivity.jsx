@@ -9,6 +9,7 @@ import runIcon from './images/run_icon.png'
 import walkIcon from './images/walk_icon.png'
 import swimIcon from './images/swim_icon.png'
 import { useParams } from "react-router-dom";
+import BACKEND_URL from "../config.js";
 
 const Form = () => {
   const navigation = useNavigate();
@@ -32,7 +33,7 @@ const Form = () => {
   const postData = async () => {
     const token = localStorage.getItem("token");
     const response = await axios.post(
-      "http://localhost:8080/activity/add-activity",
+      `${BACKEND_URL}/activity/add-activity`,
       {
         activityName: data.activityName,
         activityType: data.activityType,

@@ -15,6 +15,7 @@ import axios from 'axios'
 import {useParams,useNavigate} from 'react-router-dom'
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content"; 
+import BACKEND_URL from '../config.js'
 
 
 
@@ -105,7 +106,7 @@ function EditActivity() {
         const token = localStorage.getItem("token");
         
 
-        const UpdateAct = await axios.put(`http://localhost:8080/activity/updateactivity/${id}`,
+        const UpdateAct = await axios.put(`${BACKEND_URL}/activity/updateactivity/${id}`,
         {
           activityType:editData.activity, 
           activityName:editData.activityName,
@@ -140,7 +141,7 @@ function EditActivity() {
       try {
         const token = localStorage.getItem("token");
         console.log(id);
-        const EditData = await axios.get(`http://localhost:8080/activity/getactivity/${id}`,{headers: {authorization:`Bearer ${token}`}})
+        const EditData = await axios.get(`${BACKEND_URL}/activity/getactivity/${id}`,{headers: {authorization:`Bearer ${token}`}})
         console.log(EditData);
         setEditData({activity:EditData.data.activityType,  
                     activityName:EditData.data.activityName, 

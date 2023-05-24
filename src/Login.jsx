@@ -20,6 +20,7 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import BACKEND_URL from "../config.js";
 
 function Copyright(props) {
   return (
@@ -63,7 +64,7 @@ export default function Login() {
       props.setSubmitting(false);
     }, 2000);
     const login = async () => {
-      const resData = await axios.post("http://localhost:8080/user/login", {
+      const resData = await axios.post(`${BACKEND_URL}/user/login`, {
         email: values.email,
         password: values.password,
       });

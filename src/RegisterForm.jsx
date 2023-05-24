@@ -4,6 +4,7 @@ import './RegisterForm.css'
 import Joi from 'joi';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import BACKEND_URL from '../config.js';
 
 
 function RegisterForm() {
@@ -77,7 +78,7 @@ function RegisterForm() {
         alert("every field cannot be empty")
       }
     }else{
-      const resRegisterData = await axios.post('http://localhost:8080/user/register',{...registerData})
+      const resRegisterData = await axios.post(`${BACKEND_URL}/user/register`,{...registerData})
       setRegisterData({firstname:"", lastname:"", email:"", password:"", confirmPassword:""})
       alert(resRegisterData.data.message)
       navigation('/RegisterComplete')

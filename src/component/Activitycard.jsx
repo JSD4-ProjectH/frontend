@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import BACKEND_URL from "../../config.js";
 
 const typeIconMap = {
   Running: "fa-person-running",
@@ -32,7 +33,7 @@ function Activitycard({setRun, setWalk, setHike, setSwim, setBike}) {
     async function fetchdata() {
       const token = localStorage.getItem('token');
       const responseData = await axios.get(
-        "http://localhost:8080/activity/userdata", {
+        `${BACKEND_URL}/activity/userdata`, {
           headers: {
             authorization: `Bearer ${token}`,
           }
@@ -70,7 +71,7 @@ function Activitycard({setRun, setWalk, setHike, setSwim, setBike}) {
     const confirmDelete = window.confirm("Are you sure you want to delete?");
     if (confirmDelete) {
       axios
-        .delete(`http://localhost:8080/activity/delete/${id}`)
+        .delete(`${BACKEND_URL}/activity/delete/${id}`)
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
         setIsDelete(true)

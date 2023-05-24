@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import "./EditProfile.css";
 import myPhoto from "./images/myPhoto.jpg";
+import BACKEND_URL from "../config.js";
 
 function EditProfile() {
   const [profile, setProfile] = useState({
@@ -35,7 +36,7 @@ function EditProfile() {
       try {
         const token = localStorage.getItem("token");
         const fetchProfile = await axios.get(
-          `http://localhost:8080/user/getprofile`,
+          `${BACKEND_URL}/user/getprofile`,
           {
             headers: { authorization: `Bearer ${token}` },
           }
@@ -134,7 +135,7 @@ function EditProfile() {
         const token = localStorage.getItem("token");
 
         const response = await axios.put(
-          `http://localhost:8080/user/editprofile/${id}`,
+          `${BACKEND_URL}/user/editprofile/${id}`,
           {
             firstname,
             lastname,

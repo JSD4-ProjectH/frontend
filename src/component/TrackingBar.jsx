@@ -5,6 +5,7 @@ import { Doughnut } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
 import { useState } from "react";
 import axios from "axios";
+import BACKEND_URL from "../../config.js";
 
 
 const TrackBar = ({run,walk,hike,swim,bike,handleStart,handleEnd,isStart,duration}) => {
@@ -42,7 +43,7 @@ const activityData = {
   useEffect(()=>{
     const token = localStorage.getItem('token');
     async function fetchData () {
-      const resData = await axios.get('http://localhost:8080/user/getBMI',
+      const resData = await axios.get(`${BACKEND_URL}/user/getBMI`,
       {headers: { authorization: 'Bearer ' + token}}
       )
       setUpdata(resData.data.user.updatedAt)

@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/esm/Row";
 import DefaultImg from "../images/profile.jpeg";
 import axios from "axios";
+import BACKEND_URL from "../../config.js";
 
 function Profile() {
   const [profile, setProfile] = useState("");
@@ -15,7 +16,7 @@ function Profile() {
       try {
         const token = localStorage.getItem("token");
         const userProfile = await axios.get(
-          `http://localhost:8080/user/getprofile`,
+          `${BACKEND_URL}/user/getprofile`,
           {
             headers: { authorization: `Bearer ${token}` },
           }
